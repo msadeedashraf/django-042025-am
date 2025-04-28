@@ -169,7 +169,7 @@ test the app both urls should work
 http://127.0.0.1:8000/
 
 
-to css and js files to the project
+to add css and js files to the project
 
 to add css 
 ```
@@ -179,6 +179,12 @@ to add css
 to add javascript
 ```
 <script src="{% static 'js/myscript.js' %}"></script>
+```
+
+on top of each .html page add the following code to load static files
+
+```
+{% load static %}
 ```
 
 Go to myproject\settings.py
@@ -202,3 +208,4 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 ...
 ```
+
