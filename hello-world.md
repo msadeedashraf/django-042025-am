@@ -55,7 +55,9 @@ Create folders (static and templates) in the root myproject folder
 
 In static create css and scripts folder and place a styles.css and myscript.js file respectively.
 
-styles.css```
+styles.css
+
+```
 
 h1
 {
