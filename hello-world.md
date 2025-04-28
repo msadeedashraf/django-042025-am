@@ -178,7 +178,7 @@ to add css
 
 to add javascript
 ```
-<script src="{% static 'js/myscript.js' %}"></script>
+<script src="{% static 'scripts/myscript.js' %}"></script>
 ```
 
 on top of each .html page add the following code to load static files
@@ -208,4 +208,6 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 ...
 ```
+
+
 
