@@ -87,7 +87,7 @@ contact.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
 
 </head>
 <body>
@@ -97,7 +97,7 @@ contact.html
 
 
 
-<script src="{% static 'js/myscript.js' %}"></script>
+
 
 </body>
 </html>
@@ -112,7 +112,7 @@ myfirst.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
 </head>
 <body>
     <h1>Home Page</h1>
@@ -139,7 +139,28 @@ def contact(request):
 
 
 ```
+Go to myproject\settings.py
 
+add "DIRS": ["templates"]
+
+```
+
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": ["templates"],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
+    },
+]
+
+```
 
 
 
