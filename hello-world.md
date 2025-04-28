@@ -50,3 +50,32 @@ http://127.0.0.1:8000/
 http://127.0.0.1:8000/contact/
 
 ### Making the  pages and static files work
+ 
+Create folders (static and templates) in the root myproject folder
+
+In static create css and scripts folder and place a styles.css and myscript.js file respectively.
+
+```styles.css
+
+h1
+{
+    color: blue;
+}
+
+body {
+
+    background-color: beige;
+}
+```
+
+```myscript.js
+alert("This is test js")
+```
+
+
+
+
+
+
+
+
