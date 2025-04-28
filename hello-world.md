@@ -77,6 +77,52 @@ alert("This is test js")
 ```
 
 
+In the templates folder create contact.html and myfirst.html files
+
+contact.html
+
+```
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+</head>
+<body>
+    <h1>Contact Us</h1>
+<p>Welcome to my first Django project!</p>
+<p>Go to our <a href="/">Home</a> page.</p>
+
+
+
+<script src="{% static 'js/myscript.js' %}"></script>
+
+</body>
+</html>
+
+```
+
+myfirst.html
+
+```
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Home Page</h1>
+<p>Welcome to my first Django project!</p>
+<p>Go to our <a href="/contact">Contact</a> page.</p>
+</body>
+</html>
+
+
+```
 
 
 
