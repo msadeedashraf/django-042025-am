@@ -54,7 +54,7 @@ http://127.0.0.1:8000/contact/
  
 Create folders (static and templates) in the root myproject folder
 
-In static create css and scripts folder and place a styles.css and myscript.js file respectively.
+Inside static folder create css and scripts folder and place a styles.css and myscript.js file respectively.
 
 styles.css
 
