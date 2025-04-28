@@ -47,6 +47,7 @@ urlpatterns = [
 test the app
  
 http://127.0.0.1:8000/
+
 http://127.0.0.1:8000/contact/
 
 ### Making the  pages and static files work
@@ -163,4 +164,41 @@ TEMPLATES = [
 ```
 
 
+test the app both urls should work
+ 
+http://127.0.0.1:8000/
 
+
+to css and js files to the project
+
+to add css 
+```
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+```
+
+to add javascript
+```
+<script src="{% static 'js/myscript.js' %}"></script>
+```
+
+Go to myproject\settings.py
+
+at the start add  import os
+
+```
+import os
+from pathlib import Path
+...
+```
+
+
+
+add STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+```
+...
+STATIC_URL = "static/"
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+...
+```
