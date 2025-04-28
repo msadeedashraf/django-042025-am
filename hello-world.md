@@ -124,7 +124,21 @@ myfirst.html
 
 ```
 
+Update the views.py file with the following code
 
+views.py
+```
+from django.shortcuts import render
+
+def homepage(request):
+    return render(request, "myfirst.html")
+
+
+def contact(request):
+    return render(request, "contact.html")
+
+
+```
 
 
 
