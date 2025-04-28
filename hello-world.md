@@ -68,7 +68,9 @@ body {
 }
 ```
 
-myscript.js```
+myscript.js
+
+```
 alert("This is test js")
 ```
 
