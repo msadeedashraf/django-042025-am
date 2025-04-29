@@ -34,7 +34,9 @@ def contact(request):
  
  
 update the urls.py file in myproject folder and copy the following code/replace
- 
+
+urls.py
+``` 
 from . import views
  
 urlpatterns = [
@@ -43,6 +45,8 @@ urlpatterns = [
     path("contact/", views.contact ),
  
 ]
+
+```
  
 test the app
  

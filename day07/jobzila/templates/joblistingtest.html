@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'sharedpage.html'%}
+{% block title %} Job Listing {% endblock title %}
+{% block main %}
+      
+      <main>
+        <section class="jobs-listing-section">
+
+          <h2>Job Listing</h2>
+        
+          <div >
+        </div>
+
+          {% if myalljobslist|length == 0%}
+
+          <div>No job found</div>
+          {% else %}
+
+          {% for j in myalljobslist %}
+          <div class="job-list">
+            <h3>{{j.title}}</h3>
+            <p>{{j.company}}</p>
+            <p>{{j.location}}</p>
+            <p>{{j.description}}</p>
+                <p class="learn-more"><a href="">Learn More</a></p>
+                <p class="update-delete-btn">
+                  <a href="/update/{{j.jobid}}" type="button">Update</a>
+                  
+                  <a href="/delete/{{j.jobid}}" type="button">Delete</a>
+
+                  
+                </p>
+        </div>
+          
+          {% endfor %}
+
+          {% endif %}
+
+
+
+
+
+
+          
+
+            
+
+        </section>
+      </main>
+
+{% endblock main %}
+     
