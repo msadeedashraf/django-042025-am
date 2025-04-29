@@ -1,23 +1,25 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %} {% endblock title %}</title>
-    <link rel="stylesheet" href="../static/styles.css" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
   </head>
   <body>
     <header>
       <h1>JobZila</h1>
       <nav>
         <ul>
-          <li><a href="index">Home</a></li>
-          <li><a href="jobsearch">Job Search</a></li>
-          <li><a href="joblisting">Job Listing</a></li>
-          <li><a href="terms">Terms of Service</a></li>
-          <li><a href="privacy">Privacy Policy</a></li>
-          <li><a href="contact">Contact Us</a></li>
-          <li><a href="addjobs">Add Job</a></li>
+          <li><a href="../">Home</a></li>
+          <li><a href="../jobsearch">Job Search</a></li>
+          <li><a href="../joblisting">Job Listing</a></li>
+          <li><a href="../terms">Terms of Service</a></li>
+          <li><a href="../privacy">Privacy Policy</a></li>
+          <li><a href="../contact">Contact Us</a></li>
+          <li><a href="../addjobs">Add Job</a></li>
 
 
         </ul>
