@@ -212,6 +212,28 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 ...
 ```
+### Creating Blog App
 
+(.venv) PS D:\CBC\django\day08\jobzila> py .\manage.py startapp blog
+
+```
+py .\manage.py startapp blog
+
+```
+
+update the blog\views.py file
+```
+def blog(request):
+    return render(request, "")
+```
+
+Go to myproject\settings.py and INSTALLED_APPS = []
+```
+[
+    ...
+    "django.contrib.staticfiles",
+    "blog",
+]
+```
 
 
