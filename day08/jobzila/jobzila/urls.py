@@ -29,4 +29,5 @@ urlpatterns = [
     path("jobsearch/", views.jobsearch),
     path("privacy/", views.privacy),
     path("terms/", views.terms),
+    path("blog/", include("blog.urls")),
 ]
