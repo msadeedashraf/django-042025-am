@@ -223,8 +223,24 @@ py .\manage.py startapp blog
 
 update the blog\views.py file
 ```
+from django.shortcuts import render
+
+# Create your views here.
 def blog(request):
-    return render(request, "")
+    return render(request, "blogs.html")
+
+```
+
+create the blog\urls.py file 
+
+```
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("", views.blog),
+]
+
 ```
 
 Go to myproject\settings.py and INSTALLED_APPS = []
@@ -235,5 +251,26 @@ Go to myproject\settings.py and INSTALLED_APPS = []
     "blog",
 ]
 ```
+
+Go to myproject\urls.py and make sure to check include is imported  
+
+```
+...
+from django.urls import path, include
+...
+
+urlpatterns = [
+   ...
+    path("blog/", include("blog.urls")),
+]
+```
+
+run the project 
+```
+>py .\manage.py runserver 8005
+
+```
+
+Test the blog app using the url----http://127.0.0.1:8005/blog/
 
 
