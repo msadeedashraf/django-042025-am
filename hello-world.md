@@ -221,6 +221,40 @@ py .\manage.py startapp blog
 
 ```
 
+```
+> cd blog
+
+> mkdir templates
+```
+
+create a blogs.html in the templates folder 
+```
+{% extends 'sharedpage.html'%}
+{% block title %} Blog {% endblock title %}
+{% block main %}
+    <main>
+        <section id="joblist-section">
+            <h2>Blogs</h2>
+            
+        
+            <div class="joblisting-div">
+                <div class="job-listing">
+                    <h3><a href="">Title of the Blog</a></h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae, perspiciatis?</p>
+                    <p> 2025/04/30 by <strong>Sadeed</strong>  </p>
+                    <p class="learn-more"><a href="#">Read More</a></p>
+
+
+                </div>
+
+            </div>     
+        </section>
+    </main>
+{% endblock main %}
+```
+
+
+
 update the blog\views.py file
 ```
 from django.shortcuts import render
