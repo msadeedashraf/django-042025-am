@@ -212,7 +212,7 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 ...
 ```
-### Creating Blog App
+### Creating Blog App--Day08
 
 (.venv) PS D:\CBC\django\day08\jobzila> py .\manage.py startapp blog
 
@@ -272,5 +272,35 @@ run the project
 ```
 
 Test the blog app using the url----http://127.0.0.1:8005/blog/
+
+
+### Models & Migrations --Day09
+
+Go to the blog\models.py and up the code [link](https://www.w3schools.com/django/django_models.php) 
+
+```
+
+# Create your models here.
+class Blog(models.Model):
+    title = models.CharField(max_length=255)
+    body = models.TextField()
+    slug = models.SlugField()
+    link = models.URLField()
+    date = models.DateTimeField()
+    author = models.CharField(max_length=50)
+    banner = models.ImageField()
+
+```
+
+> python -m pip install Pillow
+
+> py .\manage.py makemigrations 
+
+> py .\manage.py migrate
+
+optional to view the sql generated to create a table in the DB.
+
+> python manage.py sqlmigrate blog 0001
+ 
 
 
