@@ -328,7 +328,11 @@ class Blog(models.Model):
 
 > python -m pip install Pillow
 
+# anytime a model is updated issue 
+
 > py .\manage.py makemigrations 
+
+# then to update the DB
 
 > py .\manage.py migrate
 
@@ -337,4 +341,12 @@ optional to view the sql generated to create a table in the DB.
 > python manage.py sqlmigrate blog 0001
  
 
+### ORM 
 
+py .\manage.py shell
+
+>>> from blog.models import Blog
+>>> b = Blog() 
+>>> b.title = "My Third Blog"
+>>> b.save()
+>>> Blog.objects.all()
