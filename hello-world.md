@@ -341,12 +341,41 @@ optional to view the sql generated to create a table in the DB.
 > python manage.py sqlmigrate blog 0001
  
 
-### ORM 
+### ORM ---Day 10
 
 py .\manage.py shell
 
 >>> from blog.models import Blog
 >>> b = Blog() 
 >>> b.title = "My Third Blog"
+>>> b.body = "My Third Blog"
+>>> b.slug = "My Third Blog"
+>>> b.link = "My Third Blog"
+>>> b.author = "My Third Blog"
 >>> b.save()
 >>> Blog.objects.all()
+
+
+### Admin panel ---Day 11
+
+
+> python manage.py createsuperuser
+
+provide usename and password
+
+To Check the login 
+
+http://127.0.0.1:8000/admin/
+
+To Delete the user 
+
+> python manage.py shell
+
+Inside the shell, run : 
+
+>>>from django.contrib.auth.models import User
+>>>User.objects.get(username='admin').delete()
+>>>exit()
+
+To Filter a user if it exist
+>>>User.objects.filter(username='admin')
