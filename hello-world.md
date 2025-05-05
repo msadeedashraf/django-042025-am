@@ -379,3 +379,57 @@ Inside the shell, run :
 
 To Filter a user if it exist
 >>>User.objects.filter(username='admin')
+
+How to register the model in the admin panel 
+
+Go to blog\admin.py
+```
+from .models import Blog
+
+# Register your models here.
+
+admin.site.register(Blog)
+```
+
+Try updating and Saving the data from the admin panel.
+
+Now Connect the data on the blog Page
+
+
+Go to blog\views.py
+```
+from .models import Blog
+
+# Create your views here.
+def blog(request):
+    blog = Blog.objects.all().order_by("-date")
+    return render(request, "blogs.html", {"blog": blog})
+
+```
+
+
+Go to blog\templates\blogs.html and update the following code
+```
+ <main>
+        <section id="joblist-section">
+            <h2>Blogs</h2>
+            
+            <div class="joblisting-div">
+
+                {%  for b in blog  %}
+
+                <div class="job-listing">
+                    <h3><a href="">{{b.title}}</a></h3>
+                    <p>{{b.body}}</p>
+                    <p> {{b.date}} by <strong>{{b.author}}</strong>  </p>
+                    <p class="learn-more"><a href="#">Read More</a></p>
+
+
+                </div>
+                {% endfor %}
+
+
+            </div>     
+        </section>
+    </main>
+```
