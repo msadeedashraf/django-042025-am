@@ -10,7 +10,7 @@
                 {%  for b in blog  %}
 
                 <div class="job-listing">
-                    <h3><a href="">{{b.title}}</a></h3>
+                    <h3><a href="{% url 'blogpage' slug=b.slug %}">{{b.title}}</a></h3>
                     <p>{{b.body}}</p>
                     <p> {{b.date}} by <strong>{{b.author}}</strong>  </p>
                     <p class="learn-more"><a href="#">Read More</a></p>

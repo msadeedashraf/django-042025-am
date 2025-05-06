@@ -447,3 +447,35 @@ urlpatterns = [
 ```
 
 [Path Converters](https://docs.djangoproject.com/en/5.1/topics/http/urls/)
+
+```
+urlpatterns = [
+    path("", views.blog, name="bloglist"),
+    path("<slug:slug>", views.blog_page, name="blogpage"),
+]
+
+```
+
+```
+from django.http import HttpResponse
+
+def blog_page(request, slug):
+    return HttpResponse(slug)
+
+```
+
+blog/templates/blogs.html
+```
+
+                {%  for b in blog  %}
+
+                <div class="job-listing">
+                    <h3><a href="{% url 'blogpage' slug=b.slug %}">{{b.title}}</a></h3>
+                    <p>{{b.body}}</p>
+                    <p> {{b.date}} by <strong>{{b.author}}</strong>  </p>
+                    <p class="learn-more"><a href="#">Read More</a></p>
+
+
+                </div>
+                {% endfor %}
+```
