@@ -1,0 +1,27 @@
+{% extends 'sharedpage.html'%}
+{% block title %} Blog {% endblock title %}
+{% block main %}
+    <main>
+        <section id="joblist-section">
+            <h2>Blogs</h2>
+            
+            <div class="joblisting-div">
+
+                {%  for b in blog  %}
+
+                <div class="job-listing">
+                    <h3><a href="">{{b.title}}</a></h3>
+                    <p>{{b.body}}</p>
+                    <p> {{b.date}} by <strong>{{b.author}}</strong>  </p>
+                    <p class="learn-more"><a href="#">Read More</a></p>
+
+
+                </div>
+                {% endfor %}
+
+
+            </div>     
+        </section>
+    </main>
+{% endblock main %}
+  

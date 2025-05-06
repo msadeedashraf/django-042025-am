@@ -433,3 +433,17 @@ Go to blog\templates\blogs.html and update the following code
         </section>
     </main>
 ```
+
+### URL and Slugs ---Day 12
+
+```
+urlpatterns = [
+    path("", views.blog, name="bloglist"),
+]
+```
+
+```
+  <li><a href="{% url 'bloglist' %}">Blog</a></li>
+```
+
+[Path Converters](https://docs.djangoproject.com/en/5.1/topics/http/urls/)

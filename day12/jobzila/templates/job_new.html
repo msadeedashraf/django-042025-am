@@ -1,0 +1,25 @@
+{% extends 'sharedpage.html'%}
+{% block title %} Contact Us {% endblock title %}
+{% block main %}
+    <main>
+      <section class="contact-section">
+        <h2>Add Job</h2>
+        <div class="contact-div">
+          <form action="/addjobs" method="POST"  class="contact-form">
+            <label for="jobtitle">Job Title</label>
+            <input type="text" id="jobtitle" name="jobtitle" required />
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" required />
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" required />
+            <label for="jobdesc">Job Description</label>
+            <input type="text" id="jobdesc" name="jobdesc" required />
+
+
+           
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </section>
+    </main>
+{% endblock main %}
