@@ -479,3 +479,87 @@ blog/templates/blogs.html
                 </div>
                 {% endfor %}
 ```
+
+Change the URLs to app the app_name in blog\urls.py
+```
+app_name = "blogapp"
+
+urlpatterns = [
+    path("", views.blog, name="bloglist"),
+    path("<slug:slug>", views.blog_page, name="blogpage"),
+]
+
+
+```
+
+Update the blog\blogs.html
+```
+    {%  for b in blog  %}
+
+                <div class="job-listing">
+                    <h3><a href="{% url 'blogapp:blogpage' slug=b.slug %}">{{b.title}}</a></h3>
+                    <p>{{b.body}}</p>
+                    <p> {{b.date}} by <strong>{{b.author}}</strong>  </p>
+                    <p class="learn-more"><a href="#">Read More</a></p>
+
+
+                </div>
+                {% endfor %}
+```
+
+Update the url in the sharedpage.html as well
+```
+<nav>
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="../jobsearch">Job Search</a></li>
+          <li><a href="../joblisting">Job Listing</a></li>
+          <li><a href="../terms">Terms of Service</a></li>
+          <li><a href="../privacy">Privacy Policy</a></li>
+          <li><a href="../contact">Contact Us</a></li>
+          <li><a href="../contact">Contact Us</a></li>
+          <li><a href="{% url 'blogapp:bloglist' %}">Blog</a></li>
+
+          <li><a href="../addjobs">Add Job</a></li>
+
+
+        </ul>
+```
+
+Create a blogs_details.html page in the blog\templates folder
+
+blogs_details.html
+```
+{% extends 'sharedpage.html'%}
+{% block title %} Blog {% endblock title %}
+{% block main %}
+    <main>
+        <section id="joblist-section">
+            <h2>{{blog.title}}</h2>
+            
+            <div class="joblisting-div">
+
+                 <div class="job-listing">
+                    <p>{{blog.body}}</p>
+                    <p> {{blog.date}} by <strong>{{blog.author}}</strong>  </p>
+                    <p class="learn-more"><a href="#">Read More</a></p>
+
+
+                </div>
+                
+
+            </div>     
+        </section>
+    </main>
+{% endblock main %}
+  
+
+```
+
+Update the blog\views.py by replace the blog_page with the following code
+```
+
+def blog_page(request, slug):
+    blog = Blog.objects.get(slug=slug)
+    return render(request, "blogs_details.html", {"blog": blog})
+```

@@ -10,4 +10,11 @@ def blog(request):
 
 
 def blog_page(request, slug):
+    blog = Blog.objects.get(slug=slug)
+    return render(request, "blogs_details.html", {"blog": blog})
+
+
+"""
+def blog_page(request, slug):
     return HttpResponse(slug)
+"""
