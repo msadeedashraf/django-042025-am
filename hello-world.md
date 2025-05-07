@@ -563,3 +563,31 @@ def blog_page(request, slug):
     blog = Blog.objects.get(slug=slug)
     return render(request, "blogs_details.html", {"blog": blog})
 ```
+
+Now To Upload images in the Blog Posts add the following in the settings.py file
+```
+MEDIA_URL = "media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+```
+
+myproject/urls.py
+```
+from django.conf import settings
+
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", views.homepage),
+    path("joblisting/", views.joblisting),
+    path("contact/", views.contact),
+    path("jobsearch/", views.jobsearch),
+    path("privacy/", views.privacy),
+    path("terms/", views.terms),
+    path("blog/", include("blog.urls")),
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+```
