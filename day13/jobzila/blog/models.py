@@ -12,7 +12,7 @@ class Blog(models.Model):
     link = models.URLField()
     date = models.DateTimeField(auto_now_add=True)
     author = models.CharField(max_length=50)
-    banner = models.ImageField(blank=True, null=True)
+    banner = models.ImageField(default="default.jpg", blank=True, null=True)
 
     def __str__(self):
         return self.title

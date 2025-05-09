@@ -591,3 +591,30 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 ```
+
+Check and Install the Package
+
+>pip show pillow
+>pip install pillow
+
+
+in the models.py update the banner to hold the default image
+```
+class Blog(models.Model):
+    title = models.CharField(max_length=255)
+    body = models.TextField()
+    slug = models.SlugField()
+    link = models.URLField()
+    date = models.DateTimeField(auto_now_add=True)
+    author = models.CharField(max_length=50)
+    banner = models.ImageField(default="default.jpg", blank=True, null=True)
+
+```
+
+the model is changed 
+
+>py .\manage.py makemigrations
+>py .\manage.py migrate
+
+Test the app
+http://127.0.0.1:8000/admin/blog/

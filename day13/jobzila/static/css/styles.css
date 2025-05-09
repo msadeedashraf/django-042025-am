@@ -284,6 +284,12 @@ padding: 20px;
       
     }
 
+    .banner
+    {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    }
 
 
     /*Contact Us Page CSS Ends*/
