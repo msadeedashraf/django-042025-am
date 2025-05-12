@@ -618,3 +618,12 @@ the model is changed
 
 Test the app
 http://127.0.0.1:8000/admin/blog/
+
+### Day 16 -- User Registration
+
+(.venv) PS D:\CBC\django\day16\jobzila> py .\manage.py startapp users
+
+```
+py .\manage.py startapp users
+
+```
