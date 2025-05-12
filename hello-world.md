@@ -627,3 +627,46 @@ http://127.0.0.1:8000/admin/blog/
 py .\manage.py startapp users
 
 ```
+
+add users/urls.py in the users app folder
+```
+from django.urls import path
+from . import views
+
+app_name = "users"
+
+urlpatterns = [path("register/", views.register_view, name="register")]
+
+```
+
+
+update the users/views.py
+```
+def register_view(request):
+    return render(request, "register.html")
+
+```
+
+create users/templates/register.html
+```
+{% extends 'sharedpage.html'%}
+{% block title %} Register User {% endblock title %}
+{% block main %}
+    <main>
+        <section id="joblist-section">
+            <h2>Register a New User</h2>
+            
+            </div>     
+        </section>
+    </main>
+{% endblock main %}
+  
+
+```
+
+Test the app 
+> py .\manage.py runserver
+
+http://127.0.0.1:8000/users/register/
+
+and check the newly created register.html page in response

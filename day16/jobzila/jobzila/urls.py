@@ -31,6 +31,7 @@ urlpatterns = [
     path("privacy/", views.privacy),
     path("terms/", views.terms),
     path("blog/", include("blog.urls")),
+    path("users/", include("users.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
