@@ -2,10 +2,17 @@
 {% block title %} Register User {% endblock title %}
 {% block main %}
     <main>
-        <section id="joblist-section">
-            <h2>Register a New User</h2>
+        <section class="contact-section">
             
-            </div>     
+            <h2>Register a New User</h2>
+
+            <div class="contact-div">
+
+                <form class="contact-form"  action="/users/register/" method="post"></form>
+                {{form}}
+                <button>Submit</button>
+            </div>
+
         </section>
     </main>
 {% endblock main %}
