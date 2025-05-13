@@ -10,7 +10,7 @@ def register_view(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             login(request, form.save())
-            return redirect("blogapp:blogpage")
+            return redirect("blogapp:bloglist")
     else:
         form = UserCreationForm()
 

@@ -8,10 +8,11 @@
 
             <div class="contact-div">
 
-                <form class="contact-form"  action="/users/register/" method="POST"></form>
-                {% csrf_token %}
-                {{form}}
+            <form action="/users/register/" method="POST">
+             {% csrf_token %}
+             {{form}}
                 <button>Submit</button>
+            </form>
             </div>
 
         </section>
