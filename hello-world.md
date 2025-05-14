@@ -688,3 +688,107 @@ Test the app
 http://127.0.0.1:8000/users/register/
 
 and check the newly created register.html page in response
+
+### Day 18 --- Login and Authentication
+
+sharedpage.html
+```
+...
+          <li><a href="{% url 'users:register' %}">Register</a></li>
+          <li><a href="{% url 'users:login' %}">Login</a></li>
+          
+          <li><a href="/addjobs">Add Job</a></li>
+...
+```
+
+users\urls.py
+```
+from . import views
+
+app_name = "users"
+
+urlpatterns = [
+    path("register/", views.register_view, name="register"),
+    path("login/", views.login_view, name="login"),
+]
+
+```
+users\views.py
+```
+...
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+...
+
+
+def login_view(request):
+    if request.method == "POST":
+        return redirect("users:login")
+
+    else:
+        form = AuthenticationForm()
+
+    return render(request, "login.html", {"form": form})
+
+
+```
+
+create users\templates\login.html
+```
+
+```
+
+Test the app top see the login page with form
+
+update users/views.py
+```
+
+def login_view(request):
+    if request.method == "POST":
+        # return redirect("users:login")
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            # logic here
+            return redirect("blogapp:bloglist")
+    else:
+        form = AuthenticationForm()
+
+    return render(request, "login.html", {"form": form})
+
+```
+
+Test
+http://127.0.0.1:8000/users/login/
+
+TO see if correct user/password redirects to the blog page successfully
+
+
+users/views.py
+```
+...
+from django.contrib.auth import login
+...
+
+def login_view(request):
+    if request.method == "POST":
+        # return redirect("users:login")
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            # logic here
+            login(request, form.get_user())
+
+            return redirect("blogapp:bloglist")
+    else:
+        form = AuthenticationForm()
+
+    return render(request, "login.html", {"form": form})
+
+```
+
+Test the app for not allowing to access the admin page if logged in from the app as a non-admin user.
+http://127.0.0.1:8000/users/login/
+http://127.0.0.1:8000/admin/
+
+
+### Day 19 --- Authorization
+
+

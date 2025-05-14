@@ -1,0 +1,21 @@
+{% extends 'sharedpage.html'%}
+{% block title %} Login {% endblock title %}
+{% block main %}
+    <main>
+        <section class="contact-section">
+            
+            <h2>Login Page</h2>
+
+            <div class="contact-div">
+
+            <form action="/users/login/" method="POST">
+             {% csrf_token %}
+             {{form}}
+                <button>Submit</button>
+            </form>
+            </div>
+
+        </section>
+    </main>
+{% endblock main %}
+  
