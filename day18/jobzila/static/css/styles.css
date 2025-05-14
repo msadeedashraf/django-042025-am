@@ -1,0 +1,295 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body
+{
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 16px;
+ line-height: 1.6;
+ color: #333;
+
+}
+.job-list
+{
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #edebed;
+
+}
+header
+{
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+nav{
+    background-color: #ff8500;
+    color: white;
+    padding: 10px;
+}
+
+nav ul { list-style-type: none;}
+nav ul li { display: inline; margin-right: 20px;}
+nav ul li a { color: white; text-decoration: none;}
+
+
+
+
+nav ul li a:hover {
+    color: #f8e1cc;
+    
+}
+
+footer a:hover {
+    color: #f5251a;
+    
+}
+
+/*
+nav ul li a:hover {
+    color: #f8e1cc;
+}
+*/
+
+footer{background-color: #333;
+     color: white;
+      padding: 20px;
+    text-align: center; }
+
+    footer p a {color: #f7df04; text-decoration: none;}
+
+
+
+    #hero
+    {
+        background-image: url("../images/mainPic2.jpg");
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        height: 500px;
+        align-items: center;
+        text-align: center;
+        color: #eaaa82;
+    }
+
+    #hero-section
+    {
+        text-align: center;
+        margin-top: 100px;
+    }
+    #hero-section h2
+    {
+        color:  rgb(165, 153, 209);;
+        font-size: 36px;
+        margin-bottom: 20px;
+
+    }
+    
+
+    #hero-section p
+    {
+        color:  rgb(214, 211, 225);;
+        line-height: 2;
+        margin-bottom: 20px;
+
+    }
+
+
+    /*Terms Page CSS Begin*/
+    .terms-section{
+        text-align: left;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 30px;
+
+
+    }
+
+    .terms-section h2{
+        margin-bottom: 10px;
+    }
+
+    .terms{
+
+        margin-bottom: 20px ;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+
+    }
+
+    /*Terms Page CSS Ends*/
+    
+
+
+    /*Privacy Page CSS Begin*/
+    .privacy-section
+    {
+        text-align: left;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 30px;
+
+
+    }
+
+    .privacy-section h2{
+        margin-bottom: 10px;
+    }
+
+    .privacy{
+
+        margin-bottom: 20px ;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+
+    }
+
+    /*Privacy Page CSS Ends*/
+
+
+
+    /*Start of Job Listing page styles*/
+.joblist-div
+{
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+
+}
+
+#joblist-section
+ {
+padding: 20px;
+
+ }
+ 
+ #joblist-section h2
+ {
+    margin-bottom: 10px;
+
+ }
+ .job-listing {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #edebeb;
+
+ }
+ .learn-more {
+    text-align: right;
+ }
+
+/*End of Job Listing page styles*/
+
+
+
+    /*Job Listing Page CSS Begin*/
+/*
+    .jobs-listing-section{
+        text-align: left;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 30px;
+
+
+    }
+
+    .jobs-listing-section h2{
+        margin-bottom: 10px;
+    }
+
+    .jobs-listing{
+
+        margin-bottom: 20px ;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+
+    }
+
+    */
+    /*Job Listing Page CSS Ends*/
+
+
+    /*Contact Us Page CSS Begin*/
+    .contact-section{
+        text-align: left;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 30px;
+
+
+    }
+
+    .contact-section h2{
+        margin-bottom: 10px;
+    }
+
+    .contact-div{
+
+        margin-bottom: 20px ;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+
+    }
+
+    .contact-form{
+      /*background-color: #ccc; */
+      padding: 20px; 
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select
+    {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 5px;
+        border: 1px solid #ccc  ;
+        border-radius: 3px;
+        resize: vertical;
+
+    }
+
+    .contact-form input[type="submit"]
+    {
+
+      background-color: #333;  
+      color: #fff;
+      padding: 10px 15px;
+      margin-top:50px ;
+      border: none;
+    }
+
+    .contact-form input[type="submit"]:hover
+    {
+
+      background-color: #404040;  
+      color: #fff   ;
+      
+    }
+
+    .banner
+    {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    }
+
+
+    /*Contact Us Page CSS Ends*/
