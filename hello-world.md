@@ -806,6 +806,16 @@ urlpatterns = [
 
 ```
 
+users/views.py
+```
+def logout_view(request):
+    if request.method == "POST":
+        logout(request)
+        return redirect("blogapp:bloglist")
+
+```
+
+
 jobzila/templates/sharedpage.html
 ```
  <nav>
