@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<script>
+      function toggleMenu() {
+        var menu = document.getElementById('nav-links');
+        menu.classList.toggle('show');
+    }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>JobZila</h1>
+       <nav>
+        <div class="menu-container">
+           <!-- Hamburger icon -->
+        <div class="hamburger" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+
+      <!-- Navigation links -->
+        <ul id="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/jobsearch">Job Search</a></li>
+          <li><a href="/joblisting">Job Listing</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="{% url 'blogapp:bloglist' %}">Blog</a></li>
+          <li><a href="/addjobs">Add Job</a></li>
+          
+        
+          
+<div class="right-align" >
+
+        <form method="POST" class="logout" action="{% url 'users:logout' %}">
+              {% csrf_token %}
+                <button class="logout-button" >Logout</button>
+              </form>
+
+          <li><a href="{% url 'users:register' %}">Register</a></li>
+
+          <li><a href="{% url 'users:login' %}">Login</a></li>
+
+</div>
+         </ul>
+      </div>
+      </nav>
+    </header>
+{% block main %}
+
+{% endblock main %}
+
+<footer>
+    <p>&copy; 2024 My Job Board. All right reserved. | <a href="contact.html">Contact Us</a>  | <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a></p>
+</footer>
+</body>
+</html>
+
+

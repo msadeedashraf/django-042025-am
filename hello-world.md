@@ -791,4 +791,173 @@ http://127.0.0.1:8000/admin/
 
 ### Day 19 --- Authorization
 
+users/urls.py
+```
+from django.urls import path
+from . import views
+
+app_name = "users"
+
+urlpatterns = [
+    path("register/", views.register_view, name="register"),
+    path("login/", views.login_view, name="login"),
+    path("logout/", views.logout_view, name="logout"),
+]
+
+```
+
+jobzila/templates/sharedpage.html
+```
+ <nav>
+        <div class="menu-container">
+           <!-- Hamburger icon -->
+        <div class="hamburger" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+
+      <!-- Navigation links -->
+        <ul id="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/jobsearch">Job Search</a></li>
+          <li><a href="/joblisting">Job Listing</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="{% url 'blogapp:bloglist' %}">Blog</a></li>
+          <li><a href="/addjobs">Add Job</a></li>
+          
+        
+          
+<div class="right-align" >
+
+        <form method="POST" class="logout" action="{% url 'users:logout' %}">
+              {% csrf_token %}
+                <button class="logout-button" >Logout</button>
+              </form>
+
+          <li><a href="{% url 'users:register' %}">Register</a></li>
+
+          <li><a href="{% url 'users:login' %}">Login</a></li>
+
+</div>
+         </ul>
+      </div>
+      </nav>
+```
+
+Get rid of all the previous nav styles and add the following in css/styles.css
+```
+/* NAV Start Here*/
+
+nav {
+
+    background-color: #ff8500;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+list-style: none;
+margin:0;
+padding: 0;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+}
+
+nav ul li {
+
+    margin-right: 20px;
+}
+nav ul .right-align 
+{
+
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul .logout 
+{
+  margin-left: auto;
+}
+
+.logout-button
+{
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ border: none;
+ background: none  ;
+ color: white;
+
+
+}
+nav ul li a:hover {
+    color: #fbe3d3;
+    
+}
+
+
+/* Hamburger menu icon */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+
+/* Responsive - hide menu links initially */
+#nav-links {
+  display: flex;
+  flex-direction: row;
+}
+
+#nav-links li {
+  display: block;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+  .hamburger {
+      display: flex;
+  }
+
+  #nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: #333;
+      position: absolute;
+      top: 60px;
+      left: 0;
+  }
+
+  #nav-links li {
+      width: 100%;
+      text-align: center;
+  }
+
+  #nav-links.show {
+      display: flex;
+  }
+}
+
+/* Nav ends here*/
+
+```
 
