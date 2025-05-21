@@ -971,3 +971,14 @@ nav ul li a:hover {
 
 ```
 
+### Day 20 ---Authorisation
+
+blog/urls.py
+```
+urlpatterns = [
+    path("", views.blog, name="bloglist"),
+    path("new-blog/", views.blog_new, name="new-blog"),
+    path("<slug:slug>", views.blog_page, name="blogpage"),
+]
+```
+
