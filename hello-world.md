@@ -982,3 +982,98 @@ urlpatterns = [
 ]
 ```
 
+blog/views.py
+```
+
+@login_required(login_url="/users/login/")
+def blog_new(request):
+    # form = forms.CreateBlog()
+    return render(request, "blog_new.html")
+
+```
+
+create blog/templates/blog_new.html
+```
+{% extends 'sharedpage.html'%}
+{% block title %} Add Blog {% endblock title %}
+{% block main %}
+    <main>
+       <section id="login-form-section">
+  
+  <h2>New Blog</h2> 
+  <div class="form-div">
+        <form class="" id="contact-form" action="{% url 'blogapp:new-blog'%}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{form}}        
+          <button>Add Blog</button>
+</form>
+
+
+
+        </div>
+
+       
+            
+
+      
+    </div>
+  </section>
+    </main>
+{% endblock main %}
+  
+
+```
+-Test the code
+
+### Day 22 
+
+- To implement the custom nav based on the user logged in 
+
+templates/sharedpage.html
+```
+    <ul id="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/jobsearch">Job Search</a></li>
+          <li><a href="/joblisting">Job Listing</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/contact">Contact Us</a></li>         
+          
+          <li><a href="{% url 'blogapp:bloglist' %}">Blog</a></li>
+          
+          {% if user.is_authenticated  %}
+
+
+          <li><a href="{% url 'blogapp:new-blog' %}">Add Blog</a></li>
+          <li><a href="/addjobs">Add Job</a></li>
+          
+
+          {% endif %}
+          
+        
+          
+<div class="right-align" >
+
+  {% if user.is_authenticated %}
+  <form method="POST" class="logout" action="{% url 'users:logout' %}">
+              {% csrf_token %}
+                <button class="logout-button" >Logout</button>
+              </form>
+
+  {% else %}
+  <li><a href="{% url 'users:register' %}">Register</a></li>
+
+          <li><a href="{% url 'users:login' %}">Login</a></li>
+
+
+  {% endif %}
+
+        
+
+          
+</div>
+         </ul>
+```
+
+### Day 24 Custom Forms
+
