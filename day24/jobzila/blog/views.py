@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Blog
 from django.contrib.auth.decorators import login_required
+from . import forms
 
 # from . import forms
 
@@ -19,8 +20,19 @@ def blog_page(request, slug):
 
 @login_required(login_url="/users/login/")
 def blog_new(request):
-    # form = forms.CreateBlog()
-    return render(request, "blog_new.html")
+    if request.method == "POST":
+        form = forms.CreateBlog(request.POST, request.FILES)
+        if form.is_valid():
+            # save logic
+            # form.save()
+            newpost = form.save(commit=False)
+            newpost.author = request.user
+            newpost.save()
+            return redirect("blogapp:bloglist")
+    else:
+        form = forms.CreateBlog()
+
+    return render(request, "blog_new.html", {"form": form})
 
 
 """

@@ -1001,17 +1001,7 @@ create blog/templates/blog_new.html
        <section id="login-form-section">
   
   <h2>New Blog</h2> 
-  <div class="form-div">
-        <form class="" id="contact-form" action="{% url 'blogapp:new-blog'%}" method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{form}}        
-          <button>Add Blog</button>
-</form>
-
-
-
-        </div>
-
+  
        
             
 
@@ -1077,3 +1067,145 @@ templates/sharedpage.html
 
 ### Day 24 Custom Forms
 
+- Create a blog/forms.py
+
+```
+from django import forms
+from . import models
+
+
+class CreateBlog(forms.ModelForm):
+    class Meta:
+        model = models.Blog
+        fields = ["title", "body", "slug", "link", "banner"]
+
+```
+
+blog/views.py
+```
+...
+from . import forms
+...
+
+@login_required(login_url="/users/login/")
+def blog_new(request):
+    form = forms.CreateBlog()
+    
+    return render(request, "blog_new.html", {"form": form })
+
+
+```
+
+
+update blog/templates/blog_new.html
+```
+{% extends 'sharedpage.html'%}
+{% block title %} Add Blog {% endblock title %}
+{% block main %}
+    <main>
+       <section id="login-form-section">
+  
+  <h2>New Blog</h2> 
+  <div class="form-div">
+        <form class="" id="contact-form" action="{% url 'blogapp:new-blog'%}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{form}}        
+          <button>Add Blog</button>
+</form>
+
+
+
+        </div>
+
+       
+            
+
+      
+    </div>
+  </section>
+    </main>
+{% endblock main %}
+```
+
+- Test the code and see if the form is displayed, no saving yet.
+
+
+- Now lets add the save logic
+blog/views.py
+```
+from django.shortcuts import render, redirect
+...
+
+
+@login_required(login_url="/users/login/")
+def blog_new(request):
+    if request.method == "POST":
+        form = forms.CreateBlog(request.POST, request.FILES)
+        if form.is_valid():
+            # save logic
+            return redirect("blogapp:bloglist")
+    else:
+        form = forms.CreateBlog()
+
+    return render(request, "blog_new.html", {"form": form})
+
+
+```
+
+- Test the code to see the redirect if the form is valid, data not getting saved yet.
+
+
+- Go to admin and delete all the exting Blog Data so that we can update or model.
+http://127.0.0.1:8006/admin/blog/blog/
+
+
+- update the blog/models.py
+  
+blog/models.py
+```
+from django.db import models
+from django.contrib.auth.models import User
+
+
+# Create your models here.
+class Blog(models.Model):
+    title = models.CharField(max_length=255)
+    body = models.TextField()
+    slug = models.SlugField()
+    link = models.URLField()
+    date = models.DateTimeField(auto_now_add=True)
+    # author = models.CharField(max_length=50)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default="Admin")
+    banner = models.ImageField(default="default.jpg", blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+```
+- Apply changes in the model using migrate
+
+> py .\manage.py makemigrations
+> py .\manage.py migrate
+
+
+blog/views.py
+```
+@login_required(login_url="/users/login/")
+def blog_new(request):
+    if request.method == "POST":
+        form = forms.CreateBlog(request.POST, request.FILES)
+        if form.is_valid():
+            # save logic
+            # form.save()
+            newpost = form.save(commit=False)
+            newpost.author = request.user
+            newpost.save()
+            return redirect("blogapp:bloglist")
+    else:
+        form = forms.CreateBlog()
+
+    return render(request, "blog_new.html", {"form": form})
+
+
+```
+- Test the application and see the data getting saved and user info.
