@@ -14,6 +14,17 @@
 
 >py .\manage.py runserver
 
+>pip list
+
+- To create or regenerate the list of packages.
+
+>pip freeze > requirements.txt
+
+- Only if you already have a list of packages and you want to import them
+- 
+>pip install -r requirements.txt
+
+
 Test 
 
 >http://127.0.0.1:8000/

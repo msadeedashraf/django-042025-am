@@ -1,0 +1,27 @@
+{% extends 'sharedpage.html'%}
+{% block title %} Add Blog {% endblock title %}
+{% block main %}
+    <main>
+       <section id="login-form-section">
+  
+  <h2>New Blog</h2> 
+  <div class="form-div">
+        <form class="" id="contact-form" action="{% url 'blogapp:new-blog'%}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{form}}        
+          <button>Add Blog</button>
+</form>
+
+
+
+        </div>
+
+       
+            
+
+      
+    </div>
+  </section>
+    </main>
+{% endblock main %}
+  
