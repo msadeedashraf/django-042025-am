@@ -1,0 +1,24 @@
+{% extends 'sharedpage.html'%} 
+{% block title %} Job Listing {% endblock title%}
+{% block main %}
+
+<main>
+  <section id="joblist-section">
+    <h2>Job Listing</h2>
+    <div class="joblisting-div">
+      {% for jobs in jobs %}
+      <div class="job-listing">
+        <h3>{{ jobs.title }}</h3>
+        <p>{{jobs.company }}</p>
+        <p>{{jobs.location}}</p>
+        <p>{{jobs.description}}</p>
+        <p class="learn-more"><a href="#">Learn More</a></p>
+      </div>
+      {% empty %}
+      <p>No jobs found.</p>
+      {% endfor %}
+    </div>
+  </section>
+</main>
+
+{% endblock main %}
